@@ -4,10 +4,12 @@ import { Outlet, useNavigate } from 'react-router-dom'
 import authUtils from '../../utils/authUtils'
 import Loading from '../common/Loading'
 import assets from '../../assests'
+import { useTheme } from '@mui/material/styles';
 
 const AuthLayout = () => {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(true)
+  const theme = useTheme()
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -32,7 +34,7 @@ const AuthLayout = () => {
         flexDirection: 'column',
       }}>
         <img 
-          src={assets?.images?.logoDark || ''} 
+          src={theme.palette.mode === 'dark' ? assets?.images?.logoDark : assets?.images?.logoLight || ''}
           style={{ width: '100px' }} 
           alt="App logo" 
         />

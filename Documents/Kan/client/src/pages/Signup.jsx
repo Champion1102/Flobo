@@ -30,6 +30,7 @@ const Signup = () => {
     else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = 'Invalid email address'
 
     if (!username) newErrors.username = 'Please fill this field'
+    if(username.length < 8) newErrors.username ='Username must be at least 8 characters'
     if (!password) newErrors.password = 'Please fill this field'
     if (!confirmPassword) newErrors.confirmPassword = 'Please fill this field'
     if (password && confirmPassword && password !== confirmPassword) {
@@ -49,6 +50,7 @@ const Signup = () => {
       navigate('/')
     } catch (err) {
       const serverErrors = err?.errors || []
+      console.log(serverErrors)
       const apiErrors = {}
       serverErrors.forEach(({ param, msg }) => {
         apiErrors[param] = msg
