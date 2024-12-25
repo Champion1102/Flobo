@@ -1,4 +1,4 @@
-const baseUrl = 'http://127.0.0.1:5000/api/v1/';
+const baseUrl = 'https://flobo.onrender.com/api/v1/';
 
 const getToken = () => localStorage.getItem('token');
 
